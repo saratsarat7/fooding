@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FoodSelector extends StatefulWidget {
@@ -11,40 +12,104 @@ class FoodSelector extends StatefulWidget {
 
 class _FoodSelectorState extends State<FoodSelector> {
   //  TODO: Convert this to welcome page.
-  Expanded mainList(String row, String assetLink) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          print("Container " + row + " clicked");
-          Navigator.of(context)
-              .pushNamed('/userHome', arguments: 'Hello Second !!');
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              image: DecorationImage(
-                  image: AssetImage(assetLink), fit: BoxFit.cover)),
-        ),
-      ),
-    );
+
+  Decoration background() {
+    return BoxDecoration(color: Colors.lightGreen);
+  }
+
+  Widget bodyItems() {
+    return Container(
+        decoration: background(),
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Sign In",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  color: Colors.black),
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "User Name"),
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "Password"),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                        child: Image(
+                      image: AssetImage("assets/main_page/facebook.png"),
+                      fit: BoxFit.cover,
+                    )),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                        child: Image(
+                      image: AssetImage("assets/main_page/google.png"),
+                      fit: BoxFit.cover,
+                    )),
+                  ),
+                ),
+              ],
+            ),
+            RaisedButton(
+              child: Text("Hello"),
+              textColor: Colors.black,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "New User ?",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  "Sign Up",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.white),
+                ),
+              ],
+            ),
+            Text(
+              "Or",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black),
+            ),
+            Text(
+              "skip",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black),
+            ),
+          ],
+        ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            mainList("1", "assets/main_page/Vegetarian.jpeg"),
-            mainList("2", "assets/main_page/Non-Vegetarian.jpg"),
-            mainList("3", "assets/main_page/Eggetarian.jpg"),
-          ],
-        ),
+        child: bodyItems(),
       ),
     );
   }
