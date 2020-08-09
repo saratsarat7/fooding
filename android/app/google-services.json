@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "856533133184",
+    "firebase_url": "https://thefoodnetwork-73ad7.firebaseio.com",
+    "project_id": "thefoodnetwork-73ad7",
+    "storage_bucket": "thefoodnetwork-73ad7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856533133184:android:7c8523ba36ea3d37b0c365",
+        "android_client_info": {
+          "package_name": "com.fooding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856533133184-ueau1va94adj69ukcunatv9l4ps18kar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi03El-8zcnYndg55_Jj1jDEh2Fz3qpVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856533133184-ueau1va94adj69ukcunatv9l4ps18kar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856533133184:android:88c3a7d791b4b20fb0c365",
+        "android_client_info": {
+          "package_name": "com.the_food_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856533133184-ueau1va94adj69ukcunatv9l4ps18kar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi03El-8zcnYndg55_Jj1jDEh2Fz3qpVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856533133184-ueau1va94adj69ukcunatv9l4ps18kar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
