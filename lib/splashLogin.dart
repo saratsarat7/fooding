@@ -2,17 +2,35 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fooding/loginProvider.dart';
 
-class FoodSelector extends StatefulWidget {
-  FoodSelector({Key key, this.title}) : super(key: key);
+class SplashLogin extends StatefulWidget {
+  SplashLogin({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _FoodSelectorState createState() => _FoodSelectorState();
+  _SplashLoginState createState() => _SplashLoginState();
 }
 
-class _FoodSelectorState extends State<FoodSelector> {
-  //  TODO: Convert this to welcome page.
+bool userLoggedIn = false;
+
+class _SplashLoginState extends State<SplashLogin> {
+
+  @override
+  void initState() {
+    super.initState();
+    googleSignIn.onCurrentUserChanged.listen((userAccount) {
+      if (userAccount != null) {
+        Navigator.of(context).pushNamed('/userHome', arguments: userAccount);
+      }
+    }, onError: (err) {
+      print("Error signing in : $err");
+    });
+    googleSignIn.signInSilently(suppressErrors: false).then((userAccount) {
+      signInWithGoogle();
+    }, onError: (err) {
+      print("Error signing in : $err");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +87,7 @@ class _FoodSelectorState extends State<FoodSelector> {
                         fit: BoxFit.cover,
                       ),
                       onTap: () {
-                        print(signInWithGoogle());
+                        signInWithGoogle();
                       },
                     ),
                   ),

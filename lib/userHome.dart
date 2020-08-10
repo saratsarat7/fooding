@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fooding/foodPost.dart';
 import 'package:fooding/userProfile.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class UserPage extends StatefulWidget {
-  UserPage({Key key, this.title, String data}) : super(key: key);
+  UserPage({Key key, this.title, GoogleSignInAccount data}) : super(key: key);
 
   final String title;
 
