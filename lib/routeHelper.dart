@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooding/userHome.dart';
-import 'package:fooding/foodSelector.dart';
+import 'package:fooding/splashLogin.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

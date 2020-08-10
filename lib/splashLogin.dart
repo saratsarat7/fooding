@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fooding/loginProvider.dart';
 
 class FoodSelector extends StatefulWidget {
   FoodSelector({Key key, this.title}) : super(key: key);
@@ -12,6 +13,15 @@ class FoodSelector extends StatefulWidget {
 
 class _FoodSelectorState extends State<FoodSelector> {
   //  TODO: Convert this to welcome page.
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: bodyItems(),
+      ),
+    );
+  }
 
   Decoration background() {
     return BoxDecoration(color: Colors.lightGreen);
@@ -43,20 +53,25 @@ class _FoodSelectorState extends State<FoodSelector> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: GestureDetector(
-                        child: Image(
-                      image: AssetImage("assets/main_page/facebook.png"),
-                      fit: BoxFit.cover,
-                    )),
+                      child: Image(
+                        image: AssetImage("assets/main_page/facebook.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: GestureDetector(
-                        child: Image(
-                      image: AssetImage("assets/main_page/google.png"),
-                      fit: BoxFit.cover,
-                    )),
+                      child: Image(
+                        image: AssetImage("assets/main_page/google.png"),
+                        fit: BoxFit.cover,
+                      ),
+                      onTap: () {
+                        print(signInWithGoogle());
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -103,14 +118,5 @@ class _FoodSelectorState extends State<FoodSelector> {
             ),
           ],
         ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: bodyItems(),
-      ),
-    );
   }
 }
