@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooding/foodPost.dart';
 import 'package:fooding/userProfile.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:fooding/loginProvider.dart';
 
 class UserPage extends StatefulWidget {
   UserPage({Key key, this.title, GoogleSignInAccount data}) : super(key: key);
@@ -16,6 +17,21 @@ class _UserPageState extends State<UserPage> {
   int currentIndex = 0;
   String appBarTitle = "Your Feeds";
   Widget userBody = home();
+
+  @override
+  void initState() {
+    super.initState();
+    //  TODO: Check why the errors and also on remove until.
+    googleSignIn.onCurrentUserChanged.listen((userAccount) {
+      if (userAccount != null) {
+        Navigator.of(context).pushReplacementNamed('/userHome', arguments: userAccount);
+      } else {
+        Navigator.of(context).pushReplacementNamed('/loginScreen', arguments: userAccount);
+      }
+    }, onError: (err) {
+      print("Error signing in : $err");
+    });
+  }
 
   static Widget home() {
     return SafeArea(

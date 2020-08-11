@@ -12,12 +12,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+//  TODO: Check why the errors and also on remove until.
   @override
   void initState() {
     super.initState();
     googleSignIn.onCurrentUserChanged.listen((userAccount) {
       if (userAccount != null) {
-        Navigator.of(context).pushNamed('/userHome', arguments: userAccount);
+        Navigator.pushNamedAndRemoveUntil(context, '/userHome', ModalRoute.withName('/userHome'));
+//        Navigator.of(context).pushNamed('/userHome', arguments: userAccount);
       }
     }, onError: (err) {
       print("Error signing in : $err");
