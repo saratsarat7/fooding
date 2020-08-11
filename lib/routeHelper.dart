@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fooding/loginPage.dart';
 import 'package:fooding/userHome.dart';
-import 'package:fooding/splashLogin.dart';
+import 'package:fooding/loadAnimation.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -10,10 +11,16 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => SplashLogin(title: 'The Food Network'));
+            builder: (_) => LoadScreen(title: 'The Food Network'));
       case '/userHome':
         return MaterialPageRoute(
           builder: (_) => UserPage(
+            data: args,
+          ),
+        );
+      case '/loginScreen':
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(
             data: args,
           ),
         );

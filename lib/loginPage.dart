@@ -2,19 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fooding/loginProvider.dart';
 
-class SplashLogin extends StatefulWidget {
-  SplashLogin({Key key, this.title}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key, this.title, Object data}) : super(key: key);
 
   final String title;
 
   @override
-  _SplashLoginState createState() => _SplashLoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-bool userLoggedIn = false;
-
-class _SplashLoginState extends State<SplashLogin> {
-
+class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
@@ -95,8 +92,15 @@ class _SplashLoginState extends State<SplashLogin> {
               ],
             ),
             RaisedButton(
-              child: Text("Hello"),
-              textColor: Colors.black,
+              child: Text(
+                "SingIn",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              onPressed: () {
+                print("Hello");
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
