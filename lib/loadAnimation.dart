@@ -13,23 +13,8 @@ class LoadScreen extends StatefulWidget {
 class _LoadScreenState extends State<LoadScreen> {
   void initState() {
     super.initState();
-    googleSignIn.onCurrentUserChanged.listen((userAccount) {
-      if (userAccount != null) {
-        Navigator.pushNamedAndRemoveUntil(context, '/userHome', ModalRoute.withName('/userHome'));
-//        Navigator.of(context).pushReplacementNamed('/userHome', arguments: userAccount);
-      } else {
-        Navigator.pushNamedAndRemoveUntil(context, '/loginScreen', ModalRoute.withName('/loginScreen'));
-//        Navigator.of(context).pushReplacementNamed('/loginScreen', arguments: userAccount);
-      }
-    }, onError: (err) {
-      print("Error signing in : $err");
-    });
-    googleSignIn.signInSilently(suppressErrors: false).then((userAccount) {
-      signInWithGoogle();
-    }, onError: (err) {
-      Navigator.pushNamedAndRemoveUntil(context, '/loginScreen', ModalRoute.withName('/loginScreen'));
-//      Navigator.of(context).pushReplacementNamed('/loginScreen');
-    });
+    checkUserChanged(context);
+    silentSignIn();
   }
 
   @override

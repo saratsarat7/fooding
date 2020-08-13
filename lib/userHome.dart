@@ -21,16 +21,7 @@ class _UserPageState extends State<UserPage> {
   @override
   void initState() {
     super.initState();
-    //  TODO: Check why the errors and also on remove until.
-    googleSignIn.onCurrentUserChanged.listen((userAccount) {
-      if (userAccount != null) {
-        Navigator.of(context).pushReplacementNamed('/userHome', arguments: userAccount);
-      } else {
-        Navigator.of(context).pushReplacementNamed('/loginScreen', arguments: userAccount);
-      }
-    }, onError: (err) {
-      print("Error signing in : $err");
-    });
+    checkUserChanged(context);
   }
 
   static Widget home() {
