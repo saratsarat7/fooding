@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fooding/loginProvider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,12 +12,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+//  TODO: Check why the errors and also on remove until.
   @override
   void initState() {
     super.initState();
-    checkUserChanged(context);
-    silentSignIn();
+    googleSignIn.onCurrentUserChanged.listen((userAccount) {
+      if (userAccount != null) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/userHome', (Route<dynamic> route) => false);
+//        Navigator.of(context).pushNamed('/userHome', arguments: userAccount);
+      }
+    }, onError: (err) {
+      print("2");
+      print("Error signing in : $err");
+    });
+    googleSignIn.signInSilently(suppressErrors: false).then((userAccount) {
+      signInWithGoogle();
+    }, onError: (err) {
+      print("3");
+      print("Error signing in : $err");
+    });
   }
 
   @override
@@ -107,13 +120,18 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 5,
                 ),
-                Text(
-                  "Sign Up",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white),
-                ),
+                GestureDetector(
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamedAndRemoveUntil(context, "/signUpPage", (Route<dynamic> route) => false);
+                  },
+                )
               ],
             ),
             Text(

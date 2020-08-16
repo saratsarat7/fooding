@@ -21,7 +21,16 @@ class _UserPageState extends State<UserPage> {
   @override
   void initState() {
     super.initState();
-    checkUserChanged(context);
+    googleSignIn.onCurrentUserChanged.listen((userAccount) {
+      if (userAccount != null) {
+        Navigator.pushNamedAndRemoveUntil(context, "/userHome", (Route<dynamic> route) => false);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(context, "/loginScreen", (Route<dynamic> route) => false);
+      }
+    }, onError: (err) {
+      print("1");
+      print("Error signing in : $err");
+    });
   }
 
   static Widget home() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooding/loginPage.dart';
 import 'package:fooding/userHome.dart';
 import 'package:fooding/loadAnimation.dart';
+import 'package:fooding/signUpPage.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,6 +22,12 @@ class RouteGenerator {
       case '/loginScreen':
         return MaterialPageRoute(
           builder: (_) => LoginPage(
+            data: args,
+          ),
+        );
+      case '/signUpPage':
+        return MaterialPageRoute(
+          builder: (_) => SignUp(
             data: args,
           ),
         );
