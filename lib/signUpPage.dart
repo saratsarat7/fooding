@@ -15,41 +15,43 @@ class _SignUpState extends State<SignUp> {
   bool eggetarian = false;
   bool nonVegetarian = false;
 
+  void switchSelector(String type, bool state) {
+    switch (type) {
+      case "Vegetarian":
+        this.vegetarian = state;
+        break;
+      case "Eggetarian":
+        this.eggetarian = state;
+        break;
+      case "Non-Vegetarian":
+        this.nonVegetarian = state;
+        break;
+    }
+  }
+
   Widget foodPreferences(String type, bool value) {
     return Padding(
-      padding: EdgeInsets.only(left: 100, right: 100, top: 5, bottom: 5),
+      padding: EdgeInsets.only(left: 0, right: 0, top: 5, bottom: 5),
       child: Row(
         children: [
-          Expanded(
-            flex: 2,
+          SizedBox(
+            width: 150,
             child: Text(
               type,
               style: TextStyle(
                 fontSize: 15,
+                color: Colors.black,
               ),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Switch(
-              value: value,
-              onChanged: (state) {
-                setState(() {
-                  switch (type) {
-                    case "Vegetarian":
-                      this.vegetarian = state;
-                      break;
-                    case "Eggetarian":
-                      this.eggetarian = state;
-                      break;
-                    case "Non-Vegetarian":
-                      this.nonVegetarian = state;
-                      break;
-                  }
-                });
-              },
-              activeColor: Colors.green,
-            ),
+          Switch(
+            value: value,
+            onChanged: (state) {
+              setState(() {
+                switchSelector(type, state);
+              });
+            },
+            activeColor: Colors.blue,
           ),
         ],
       ),
@@ -68,12 +70,13 @@ class _SignUpState extends State<SignUp> {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
-          borderSide: BorderSide(
-            width: 1,
-          ),
         ),
         filled: true,
+        fillColor: Colors.white70,
         hintText: label,
+        hintStyle: TextStyle(
+          color: Colors.black,
+        ),
       ),
     );
   }
@@ -96,12 +99,18 @@ class _SignUpState extends State<SignUp> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Register",
-                style: TextStyle(
-                  fontSize: 30,
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  "Register",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox.fromSize(
@@ -125,16 +134,19 @@ class _SignUpState extends State<SignUp> {
               ),
               Text(
                 "Your Food Preference",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               foodPreferences("Vegetarian", this.vegetarian),
               foodPreferences("Eggetarian", this.eggetarian),
               foodPreferences("Non-Vegetarian", this.nonVegetarian),
               SizedBox(
-                width: 200,
-                height: 40,
+                width: double.infinity,
+                height: 50,
                 child: RaisedButton(
                   onPressed: () {
                     print("im Pressed");
