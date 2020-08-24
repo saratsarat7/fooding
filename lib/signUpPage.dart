@@ -58,7 +58,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget textField(String label, IconData icon) {
+  Widget customTextField(String label, IconData icon) {
     return TextField(
       decoration: new InputDecoration(
         prefixIcon: Padding(
@@ -116,19 +116,19 @@ class _SignUpState extends State<SignUp> {
               SizedBox.fromSize(
                 size: Size(0, 20),
               ),
-              textField("Name", Icons.account_circle),
+              customTextField("Name", Icons.account_circle),
               SizedBox.fromSize(
                 size: Size(0, 20),
               ),
-              textField("Username", Icons.people),
+              customTextField("Username", Icons.people),
               SizedBox.fromSize(
                 size: Size(0, 20),
               ),
-              textField("Email", Icons.email),
+              customTextField("Email", Icons.email),
               SizedBox.fromSize(
                 size: Size(0, 20),
               ),
-              textField("Password", Icons.lock),
+              customTextField("Password", Icons.lock),
               SizedBox.fromSize(
                 size: Size(0, 20),
               ),
