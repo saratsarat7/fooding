@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fooding/cutsomWidgets.dart';
+import 'package:fooding/helpingStuff/cutsomWidgets.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({Key key, this.title, Object data}) : super(key: key);

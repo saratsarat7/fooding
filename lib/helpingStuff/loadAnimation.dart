@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fooding/loginProvider.dart';
+import 'package:fooding/helpingStuff/loginProvider.dart';
 
 class LoadScreen extends StatefulWidget {
   LoadScreen({Key key, this.title}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fooding/loginProvider.dart';
-import 'package:fooding/cutsomWidgets.dart';
+import 'package:fooding/helpingStuff//loginProvider.dart';
+import 'package:fooding/helpingStuff/cutsomWidgets.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title, Object data}) : super(key: key);
