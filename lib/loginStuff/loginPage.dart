@@ -161,7 +161,9 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.blue),
               ),
               onTap: () {
-                Navigator.pushNamed(context, "/guestHome");
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/guestHome', (Route<dynamic> route) => false);
+                //TODO : Check in case user need to create account even after he skips this.
               },
             ),
           ],

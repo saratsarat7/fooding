@@ -3,6 +3,7 @@ import 'package:fooding/loginStuff/loginPage.dart';
 import 'package:fooding/userStuff/userHome.dart';
 import 'package:fooding/helpingStuff/loadAnimation.dart';
 import 'package:fooding/loginStuff/signUpPage.dart';
+import 'package:fooding/userStuff/guestHome.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -31,6 +32,12 @@ class RouteGenerator {
             data: args,
           ),
         );
+      case '/guestHome':
+        return MaterialPageRoute(
+          builder: (_) => GuestPage(
+            data: args,
+          ),
+        );
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();
@@ -41,14 +48,14 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text("Error !! Invalid Route"),
-              )
-            ],
+          child: Center(
+            child: Text(
+              "Error !! Invalid Route.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ),
         ),
       );
