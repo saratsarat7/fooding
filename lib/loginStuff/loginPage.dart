@@ -53,10 +53,10 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.green, Colors.white60],
+            colors: [Colors.white60, Colors.green],
             begin: FractionalOffset.center,
-            end: FractionalOffset.bottomLeft,
-            tileMode: TileMode.clamp,
+            end: FractionalOffset.topRight,
+            tileMode: TileMode.mirror,
           ),
         ),
         alignment: Alignment.center,
@@ -109,9 +109,12 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                color: Colors.blue,
-                splashColor: Colors.green,
-                child: Text("Sign-In"),
+                color: Colors.lightGreen,
+                splashColor: Colors.blue,
+                child: Text(
+                  "Sign-In",
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             SizedBox.fromSize(size: Size(0, 20)),
@@ -125,9 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 20,
                       color: Colors.black),
                 ),
-                SizedBox(
-                  width: 5,
-                ),
+                SizedBox.fromSize(size: Size(10, 0)),
                 GestureDetector(
                   child: Text(
                     "Sign Up",
@@ -142,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                 )
               ],
             ),
+            SizedBox.fromSize(size: Size(0, 10)),
             Text(
               "Or",
               style: TextStyle(
@@ -149,12 +151,18 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 20,
                   color: Colors.black),
             ),
-            Text(
-              "skip",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black),
+            SizedBox.fromSize(size: Size(0, 10)),
+            GestureDetector(
+              child: Text(
+                "Explore >>",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.blue),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, "/guestHome");
+              },
             ),
           ],
         ));
