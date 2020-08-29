@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fooding/cutsomWidgets.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({Key key, this.title, Object data}) : super(key: key);
@@ -58,29 +59,6 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget customTextField(String label, IconData icon) {
-    return TextField(
-      decoration: new InputDecoration(
-        prefixIcon: Padding(
-          padding: EdgeInsets.all(0.0),
-          child: Icon(
-            icon,
-            color: Colors.black,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(40),
-        ),
-        filled: true,
-        fillColor: Colors.white70,
-        hintText: label,
-        hintStyle: TextStyle(
-          color: Colors.black,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,25 +91,15 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SizedBox.fromSize(
-                size: Size(0, 20),
-              ),
+              SizedBox.fromSize(size: Size(0, 20)),
               customTextField("Name", Icons.account_circle),
-              SizedBox.fromSize(
-                size: Size(0, 20),
-              ),
+              SizedBox.fromSize(size: Size(0, 20)),
               customTextField("Username", Icons.people),
-              SizedBox.fromSize(
-                size: Size(0, 20),
-              ),
+              SizedBox.fromSize(size: Size(0, 20)),
               customTextField("Email", Icons.email),
-              SizedBox.fromSize(
-                size: Size(0, 20),
-              ),
+              SizedBox.fromSize(size: Size(0, 20)),
               customTextField("Password", Icons.lock),
-              SizedBox.fromSize(
-                size: Size(0, 20),
-              ),
+              SizedBox.fromSize(size: Size(0, 20)),
               Text(
                 "Your Food Preference",
                 textAlign: TextAlign.center,
@@ -151,7 +119,9 @@ class _SignUpState extends State<SignUp> {
                   onPressed: () {
                     print("im Pressed");
                   },
-                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40),
+                  ),
                   color: Colors.green,
                   splashColor: Colors.lightBlueAccent,
                   child: Text("Sign-Up"),

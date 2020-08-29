@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fooding/loginProvider.dart';
+import 'package:fooding/cutsomWidgets.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title, Object data}) : super(key: key);
@@ -37,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: bodyItems(),
       ),
@@ -49,8 +51,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget bodyItems() {
     return Container(
-        decoration: background(),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.green, Colors.white60],
+            begin: FractionalOffset.center,
+            end: FractionalOffset.bottomLeft,
+            tileMode: TileMode.clamp,
+          ),
+        ),
         alignment: Alignment.center,
+        padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -61,52 +71,50 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 40,
                   color: Colors.black),
             ),
-            TextField(
-              decoration: InputDecoration(hintText: "User Name"),
-            ),
-            TextField(
-              decoration: InputDecoration(hintText: "Password"),
-            ),
+            SizedBox.fromSize(size: Size(0, 20)),
+            customTextField("Username", Icons.people),
+            SizedBox.fromSize(size: Size(0, 20)),
+            customTextField("Password", Icons.lock),
+            SizedBox.fromSize(size: Size(0, 20)),
             Row(
               children: [
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      child: Image(
-                        image: AssetImage("assets/main_page/facebook.png"),
-                        fit: BoxFit.cover,
-                      ),
+                  child: GestureDetector(
+                    child: Image(
+                      image: AssetImage("assets/main_page/facebook.png"),
                     ),
                   ),
                 ),
+                SizedBox.fromSize(size: Size(10, 0)),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: GestureDetector(
-                      child: Image(
-                        image: AssetImage("assets/main_page/google.png"),
-                        fit: BoxFit.cover,
-                      ),
-                      onTap: () {
-                        signInWithGoogle();
-                      },
+                  child: GestureDetector(
+                    child: Image(
+                      image: AssetImage("assets/main_page/google.png"),
                     ),
+                    onTap: () {
+                      signInWithGoogle();
+                    },
                   ),
                 ),
               ],
             ),
-            RaisedButton(
-              child: Text(
-                "SingIn",
-                style: TextStyle(
-                  color: Colors.black,
+            SizedBox.fromSize(size: Size(0, 20)),
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: RaisedButton(
+                onPressed: () {
+                  print("im Pressed");
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40),
                 ),
+                color: Colors.blue,
+                splashColor: Colors.green,
+                child: Text("Sign-In"),
               ),
-              onPressed: () {
-                print("Hello");
-              },
             ),
+            SizedBox.fromSize(size: Size(0, 20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -129,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white),
                   ),
                   onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(context, "/signUpPage", (Route<dynamic> route) => false);
+                    Navigator.pushNamed(context, "/signUpPage");
                   },
                 )
               ],
