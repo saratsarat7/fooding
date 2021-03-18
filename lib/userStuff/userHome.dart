@@ -36,7 +36,8 @@ class _UserPageState extends State<UserPage> {
   static Widget home() {
     return SafeArea(
       child: ListView(children: <Widget>[
-        foodPost(),
+        // foodPost(),
+      //  TODO: Fix this issue with context
       ]),
     );
   }

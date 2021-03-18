@@ -49,7 +49,7 @@ class _GuestPageState extends State<GuestPage> {
   Widget home() {
     return SafeArea(
       child: ListView(children: <Widget>[
-        foodPost(),
+        foodPost(this.context),
       ]),
     );
   }
