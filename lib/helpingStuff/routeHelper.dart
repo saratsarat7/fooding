@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fooding/loginStuff/loginPage.dart';
-import 'package:fooding/userStuff/userHome.dart';
-import 'package:fooding/helpingStuff/loadAnimation.dart';
 import 'package:fooding/loginStuff/signUpPage.dart';
+
+import 'package:fooding/userStuff/userHome.dart';
 import 'package:fooding/userStuff/guestHome.dart';
+
+import 'package:fooding/helpingStuff/loadAnimation.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
