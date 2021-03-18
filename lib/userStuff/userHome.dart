@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fooding/foodPost.dart';
-import 'package:fooding/userProfile.dart';
+import 'package:fooding/userStuff/foodPost.dart';
+import 'package:fooding/userStuff/userProfile.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:fooding/helpingStuff/loginProvider.dart';
 
 class UserPage extends StatefulWidget {
-  UserPage({Key key, this.title, String data}) : super(key: key);
+  UserPage({Key key, this.title, GoogleSignInAccount data}) : super(key: key);
 
   final String title;
 
@@ -15,6 +17,21 @@ class _UserPageState extends State<UserPage> {
   int currentIndex = 0;
   String appBarTitle = "Your Feeds";
   Widget userBody = home();
+
+  @override
+  void initState() {
+    super.initState();
+    googleSignIn.onCurrentUserChanged.listen((userAccount) {
+      if (userAccount != null) {
+        Navigator.pushNamedAndRemoveUntil(context, "/userHome", (Route<dynamic> route) => false);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(context, "/loginScreen", (Route<dynamic> route) => false);
+      }
+    }, onError: (err) {
+      print("1");
+      print("Error signing in : $err");
+    });
+  }
 
   static Widget home() {
     return SafeArea(
