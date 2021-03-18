@@ -3,7 +3,7 @@
 name: Flutter App
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   build:
